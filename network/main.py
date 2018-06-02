@@ -143,15 +143,11 @@ def run(args, train_data, val_data, test_data):
                     model_dir=args.out_model_dir, log_dir=args.log_dir,
                     data_name=train_data.name, output_generator=None)
 
-        train_loss, train_accuracy, _ = validate(
-                sess, net, args.exp_type, train_data)
-        test_loss, test_accuracy, _ = validate(
-                sess, net, args.exp_type, test_data)
+        train_loss, _ = validate(sess, net, args.exp_type, train_data)
+        test_loss, _ = validate(sess, net, args.exp_type, test_data)
 
         msg = "|| Train Loss: {:6f}".format(train_loss)
-        msg += " | Train Accu: {:5f}".format(train_accuracy)
         msg += " | Test Loss: {:6f}".format(test_loss)
-        msg += " | Test Accu: {:5f}".format(test_accuracy)
         msg += " ||"
         print(msg)
 
