@@ -7,31 +7,42 @@
 ```
 @misc{Sung:2018,
   Author = {Minhyuk Sung and Hao Su and Ronald Yu and Leonidas Guibas},
-  Title = {Deep Functional Dictionaries: Learning Consistent Semantic Structures on 3D Models from Functions},
+  Title = {Deep Functional Dictionaries: Learning Consistent Semantic Structures on 3D Models from
+    Functions},
   Year = {2018},
   Eprint = {arXiv:1805.09957},
 }
 ```
 
 ### Introduction
-This neural-network-based framework analyzes an uncurated collection of 3D models from the same category and learns two important types of semantic relations among full and partial shapes: complementarity and interchangeability. The former helps to identify which two partial shapes make a complete plausible object, and the latter indicates that interchanging two partial shapes from different objects preserves the object plausibility. These two relations are modeled as *fuzzy set* operations performed across the *dual* partial shape embedding spaces, and within each space, respectively, and *jointly* learned by encoding partial shapes as *fuzzy sets* in the dual spaces.
+Various 3D semantic attributes such as segmentation masks, geometric features, keypoints, and materials can be encoded as per-point probe functions on 3D geometries. Given a collection of related 3D shapes, we consider how to jointly analyze such probe functions over different shapes, and how to discover common latent structures using a neural network --- even in the absence of any correspondence information. Our network is trained on point cloud representations of shape geometry and associated semantic functions on that point cloud. These functions express a shared semantic understanding of the shapes but are not coordinated in any way. For example, in a segmentation task, the functions can be indicator functions of arbitrary sets of shape parts, with the particular combination involved not known to the network. Our network is able to produce a small dictionary of basis functions for each shape, a dictionary whose span includes the semantic functions provided for that shape. Even though our shapes have independent discretizations and no functional correspondences are provided, the network is able to generate latent bases, in a consistent order, that reflect the shared semantic structure among the shapes. We demonstrate the effectiveness of our technique in various segmentation and keypoint selection applications.
 
 ### Requirements
 - Numpy (tested with ver. 1.14.2)
 - TensorFlow-gpu (tested with ver. 1.4.0)
-- Gurobi (tested with 7.5.1)
-  The [Gurobi](http://www.gurobi.com/) is a commercial optimization solver. The free academic license can be obtained from [here](http://www.gurobi.com/academia/for-universities).
+- Gurobi / Gorubipy (tested with 7.5.1)<br>
+  [Gurobi](http://www.gurobi.com/) is a commercial optimization solver. The free *academic* license can be obtained from [here](http://www.gurobi.com/academia/for-universities).<br>
+  After installing, check whether gurobipy is properly installed with the following script:
+  ```
+  python -c "import gurobipy"
+  ```
 
 ### Applications
 #### ShapeNet semantic part segmentation
-Download the following data in your preferred location:
+Download the [PointNet](https://github.com/charlesq34/pointnet) part segmentation data in your preferred location:
 ```
 wget https://shapenet.cs.stanford.edu/media/shapenet_part_seg_hdf5_data.zip
 ```
 
-In `global_variables.py`, change `g_shapent_parts_dir` path to the directory containing the data.
+In `global_variables.py` file, change `g_shapent_parts_dir` path to the directory containing the data.
 
-We provide the pretrained model
+In `experiments`, train the network as follows:
+```
+./run_shapenet_parts.py --train
+```
+You can change the parameters (`k` and `\gammma` in the paper) with `-K` and `--l21_norm_weight` options, respectively.
+
+We also provide the pretrained model for parameter `k=10` and `\gammma=1.0`:
 ```
 cd experiments
 wget https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/pretrained/ShapeNetParts_10_1.000000.tgz
@@ -40,6 +51,7 @@ rm -rf ShapeNetParts_10_1.000000.tgz
 cd ..
 ```
 
+Run the evaluation (Table 1 and 2 in the paper) with the same `./run_shapenet_parts.py` (without `--train` option).
 
 
 ### Acknowledgements
