@@ -51,7 +51,7 @@ rm -rf ShapeNetParts_10_1.000000.tgz
 cd ..
 ```
 
-Run the evaluation (Table 1 and 2 in the paper) with the same `./run_shapenet_parts.py` (without `--train` option).
+Run the evaluation (Table 1 and 2 in the paper) with the same `./run_shapenet_parts.py` file (without `--train` option).
 
 
 ### Acknowledgements
