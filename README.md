@@ -28,10 +28,40 @@ Various 3D semantic attributes such as segmentation masks, geometric features, k
   ```
 
 ### Applications
+
+--------
+#### ShapeNet Keypoint Correspondence
+Download the following ShapeNet keypoint train/test data your preferred location.\
+(The data is provided by [SyncSpecCNN](https://github.com/ericyi/SyncSpecCNN).)
+```
+wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/data/SyncSpecCNN/Chair_train.h5
+wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/data/SyncSpecCNN/Chair_test.h5
+```
+
+In `global_variables.py` file, change `g_shapent_keypoints_dir` path to the directory containing the data.
+
+In `experiments`, train the network as follows:
+```
+./run_shapenet_keypoints.py --train
+```
+You can change the parameters (`k` and `\gammma` in the paper) with `-K` and `--l21_norm_weight` options, respectively.
+
+We also provide the pretrained model for parameter `k=10` and `\gammma=0.0`:
+```
+cd experiments
+wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/pretrained/ShapeNetKeypoints_10_0.000000.tgz
+tar xzvf ShapeNetKeypoints_10_0.000000.tgz
+rm -rf ShapeNetKeypoints_10_0.000000.tgz
+cd ..
+```
+<br />
+
+
+--------
 #### ShapeNet Semantic Part Segmentation
 Download and unzip the [PointNet](https://github.com/charlesq34/pointnet) part segmentation data in your preferred location.
 ```
-wget https://shapenet.cs.stanford.edu/media/shapenet_part_seg_hdf5_data.zip
+wget --no-check-certificate https://shapenet.cs.stanford.edu/media/shapenet_part_seg_hdf5_data.zip
 unzip shapenet_part_seg_hdf5_data.zip
 ```
 
@@ -46,7 +76,7 @@ You can change the parameters (`k` and `\gammma` in the paper) with `-K` and `--
 We also provide the pretrained model for parameter `k=10` and `\gammma=1.0`:
 ```
 cd experiments
-wget https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/pretrained/ShapeNetParts_10_1.000000.tgz
+wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/pretrained/ShapeNetParts_10_1.000000.tgz
 tar xzvf ShapeNetParts_10_1.000000.tgz
 rm -rf ShapeNetParts_10_1.000000.tgz
 cd ..
@@ -56,8 +86,9 @@ Run the evaluation (Table 1 and 2 in the paper) with the same `./run_shapenet_pa
 <br />
 
 
+--------
 #### S3DIS Instance Segmentation
-Download and unzip the [S3DIS](http://buildingparser.stanford.edu/dataset.html#Download) instance segmentation data in your preferred location.
+Download and unzip the [S3DIS](http://buildingparser.stanford.edu/dataset.html#Download) instance segmentation data in your preferred location.\
 (The data is provided by [SGPN](https://github.com/laughtervv/SGPN/issues/3).)
 ```
 FILE_ID="1UjcXB2wMlLt5qwYPk5iSAnlhttl1AO9u"
@@ -70,8 +101,8 @@ unzip S3DIS.zip
 
 Download the train/test split files to the unzipped directory.
 ```
-wget https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/data/S3DIS/train_hdf5_file_list.txt
-wget https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/data/S3DIS/test_hdf5_file_list.txt
+wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/data/S3DIS/train_hdf5_file_list.txt
+wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/data/S3DIS/test_hdf5_file_list.txt
 ```
 
 In `global_variables.py` file, change `g_S3DIS_dir` path to the directory containing the data.
@@ -85,7 +116,7 @@ You can change the parameters (`k` and `\gammma` in the paper) with `-K` and `--
 We also provide the pretrained model for parameter `k=150` and `\gammma=1.0`:
 ```
 cd experiments
-wget https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/pretrained/S3DIS_150_1.000000.tgz
+wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/pretrained/S3DIS_150_1.000000.tgz
 tar xzvf S3DIS_150_1.000000.tgz
 rm -rf S3DIS_150_1.000000.tgz
 cd ..

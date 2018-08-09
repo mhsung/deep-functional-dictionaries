@@ -17,6 +17,8 @@ from train_util import validate, train
 import argparse
 import numpy as np
 import evaluate
+import evaluate_keypoints
+import evaluate_obj_det
 import evaluate_sem_seg
 import random
 import tensorflow as tf
