@@ -31,14 +31,14 @@ Various 3D semantic attributes such as segmentation masks, geometric features, k
 --------
 
 #### ShapeNet Keypoint Correspondence
-Download the following ShapeNet keypoint train/test data your preferred location.\
+Download the following ShapeNet keypoint train/test data in your preferred location.\
 (The data is provided by [SyncSpecCNN](https://github.com/ericyi/SyncSpecCNN).)
 ```
 wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/data/SyncSpecCNN/Chair_train.h5
 wget --no-check-certificate https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/data/SyncSpecCNN/Chair_test.h5
 ```
 
-In `global_variables.py` file, change `g_shapent_keypoints_dir` path to the directory containing the data.
+In `global_variables.py` file, change `g_shapenet_keypoints_dir` path to the directory containing the data.
 
 In `experiments`, train the network as follows:
 ```
@@ -65,7 +65,7 @@ wget --no-check-certificate https://shapenet.cs.stanford.edu/media/shapenet_part
 unzip shapenet_part_seg_hdf5_data.zip
 ```
 
-In `global_variables.py` file, change `g_shapent_parts_dir` path to the directory containing the data.
+In `global_variables.py` file, change `g_shapenet_parts_dir` path to the directory containing the data.
 
 In `experiments`, train the network as follows:
 ```
