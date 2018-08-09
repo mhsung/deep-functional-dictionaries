@@ -54,6 +54,7 @@ tar xzvf ShapeNetKeypoints_10_0.000000.tgz
 rm -rf ShapeNetKeypoints_10_0.000000.tgz
 cd ..
 ```
+
 --------
 
 
@@ -82,6 +83,7 @@ cd ..
 ```
 
 Run the evaluation (Table 1 and 2 in the paper) with the same `./run_shapenet_parts.py` file (without `--train` option).
+
 --------
 
 
@@ -121,6 +123,7 @@ cd ..
 ```
 
 Run the evaluation (Table 3 in the paper) with the same `./run_S3DIS_instances.py` file (without `--train` option).
+
 --------
 
 
