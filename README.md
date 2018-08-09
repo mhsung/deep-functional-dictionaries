@@ -53,7 +53,7 @@ cd ..
 ```
 
 Run the evaluation (Table 1 and 2 in the paper) with the same `./run_shapenet_parts.py` file (without `--train` option).
-<br>
+<br />
 
 
 #### S3DIS Instance Segmentation
@@ -91,8 +91,8 @@ rm -rf S3DIS_150_1.000000.tgz
 cd ..
 ```
 
-Run the evaluation (Table 3 in the paper) with the same `./run_shapenet_parts.py` file (without `--train` option).
-<br>
+Run the evaluation (Table 3 in the paper) with the same `./run_S3DIS_instances.py` file (without `--train` option).
+<br />
 
 
 ### Acknowledgements
