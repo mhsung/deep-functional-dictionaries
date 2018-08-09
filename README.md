@@ -28,8 +28,8 @@ Various 3D semantic attributes such as segmentation masks, geometric features, k
   ```
 
 ### Applications
-
 --------
+
 #### ShapeNet Keypoint Correspondence
 Download the following ShapeNet keypoint train/test data your preferred location.\
 (The data is provided by [SyncSpecCNN](https://github.com/ericyi/SyncSpecCNN).)
@@ -54,10 +54,9 @@ tar xzvf ShapeNetKeypoints_10_0.000000.tgz
 rm -rf ShapeNetKeypoints_10_0.000000.tgz
 cd ..
 ```
-<br />
-
-
 --------
+
+
 #### ShapeNet Semantic Part Segmentation
 Download and unzip the [PointNet](https://github.com/charlesq34/pointnet) part segmentation data in your preferred location.
 ```
@@ -83,10 +82,9 @@ cd ..
 ```
 
 Run the evaluation (Table 1 and 2 in the paper) with the same `./run_shapenet_parts.py` file (without `--train` option).
-<br />
-
-
 --------
+
+
 #### S3DIS Instance Segmentation
 Download and unzip the [S3DIS](http://buildingparser.stanford.edu/dataset.html#Download) instance segmentation data in your preferred location.\
 (The data is provided by [SGPN](https://github.com/laughtervv/SGPN/issues/3).)
@@ -123,7 +121,7 @@ cd ..
 ```
 
 Run the evaluation (Table 3 in the paper) with the same `./run_S3DIS_instances.py` file (without `--train` option).
-<br />
+--------
 
 
 ### Acknowledgements
@@ -133,7 +131,7 @@ The files in [network/utils](network/utils) are directly brought from the [Point
 This code is released under the MIT License. Refer to [LICENSE](LICENSE) for details.
 
 ### To-Do
-- [ ] Instruction for ShapeNet keypoint correspondence experiment.
+- [x] Instruction for ShapeNet keypoint correspondence experiment.
 - [x] Instruction for ShapeNet semantic part segmentation experiment.
 - [x] Instruction for S3DIS instance segmentation experiment.
 - [ ] Instruction for MPI-FAUST human shape bases synchronization experiment.
