@@ -10,6 +10,6 @@ g++ -std=c++11 tf_sampling.cpp tf_sampling_g.cu.o -o tf_sampling_so.so -shared -
   -I $tensorflow_include_dir \
   -I $tensorflow_external_dir \
   -L $cuda_library_dir \
-  -L $tensorflow_lib \
+  -L $tensorflow_library_dir \
   -ltensorflow_framework -O2 -D_GLIBCXX_USE_CXX11_ABI=0
 

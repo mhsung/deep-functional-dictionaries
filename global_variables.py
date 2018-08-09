@@ -11,3 +11,4 @@ BASE_DIR = os.path.normpath(
 
 # Specify the data directories.
 g_shapenet_parts_dir = os.path.join(BASE_DIR, 'datasets', 'shapenet_parts')
+g_S3DIS_dir = os.path.join(BASE_DIR, 'datasets', 'S3DIS')

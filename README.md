@@ -28,8 +28,8 @@ Various 3D semantic attributes such as segmentation masks, geometric features, k
   ```
 
 ### Applications
-#### ShapeNet semantic part segmentation
-Download the [PointNet](https://github.com/charlesq34/pointnet) part segmentation data in your preferred location:
+#### ShapeNet Semantic Part Segmentation
+Download and unzip the [PointNet](https://github.com/charlesq34/pointnet) part segmentation data in your preferred location.
 ```
 wget https://shapenet.cs.stanford.edu/media/shapenet_part_seg_hdf5_data.zip
 ```
@@ -54,6 +54,43 @@ cd ..
 Run the evaluation (Table 1 and 2 in the paper) with the same `./run_shapenet_parts.py` file (without `--train` option).
 
 
+#### S3DIS Instance Segmentation
+Download and unzip the [S3DIS](http://buildingparser.stanford.edu/dataset.html#Download) instance segmentation data in your preferred location.
+(The data is provided by [SGPN](https://github.com/laughtervv/SGPN/issues/3).)
+```
+FILE_ID="1UjcXB2wMlLt5qwYPk5iSAnlhttl1AO9u"
+OUT_FILE="S3DIS.zip"
+CONFIRM=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate "https://docs.google.com/uc?export=download&id=$FILE_ID" -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$CONFIRM&id=$FILE_ID" -O $OUT_FILE
+rm -rf /tmp/cookies.txt
+```
+
+Download the train/test split files to the unzipped directory.
+```
+wget https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/data/S3DIS/train_hdf5_file_list.txt
+wget https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/data/S3DIS/test_hdf5_file_list.txt
+```
+
+In `global_variables.py` file, change `g_S3DIS_dir` path to the directory containing the data.
+
+In `experiments`, train the network as follows:
+```
+./run_S3DIS_instances.py --train
+```
+You can change the parameters (`k` and `\gammma` in the paper) with `-K` and `--l21_norm_weight` options, respectively.
+
+We also provide the pretrained model for parameter `k=150` and `\gammma=1.0`:
+```
+cd experiments
+wget https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/pretrained/ShapeNetParts_10_1.000000.tgz
+tar xzvf ShapeNetParts_10_1.000000.tgz
+rm -rf ShapeNetParts_10_1.000000.tgz
+cd ..
+```
+
+Run the evaluation (Table 3 in the paper) with the same `./run_shapenet_parts.py` file (without `--train` option).
+
+
 ### Acknowledgements
 The files in [network/utils](network/utils) are directly brought from the [PointNet++](https://github.com/charlesq34/pointnet2).
 
@@ -63,6 +100,6 @@ This code is released under the MIT License. Refer to [LICENSE](LICENSE) for det
 ### To-Do
 - [ ] Instruction for ShapeNet keypoint correspondence experiment.
 - [x] Instruction for ShapeNet semantic part segmentation experiment.
-- [ ] Instruction for S3DIS instance segmentation experiment.
+- [x] Instruction for S3DIS instance segmentation experiment.
 - [ ] Instruction for MPI-FAUST human shape bases synchronization experiment.
 - [ ] CVX code for the constrained least square problem.
