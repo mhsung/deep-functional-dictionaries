@@ -32,6 +32,7 @@ Various 3D semantic attributes such as segmentation masks, geometric features, k
 Download and unzip the [PointNet](https://github.com/charlesq34/pointnet) part segmentation data in your preferred location.
 ```
 wget https://shapenet.cs.stanford.edu/media/shapenet_part_seg_hdf5_data.zip
+unzip shapenet_part_seg_hdf5_data.zip
 ```
 
 In `global_variables.py` file, change `g_shapent_parts_dir` path to the directory containing the data.
@@ -52,6 +53,7 @@ cd ..
 ```
 
 Run the evaluation (Table 1 and 2 in the paper) with the same `./run_shapenet_parts.py` file (without `--train` option).
+<br>
 
 
 #### S3DIS Instance Segmentation
@@ -63,6 +65,7 @@ OUT_FILE="S3DIS.zip"
 CONFIRM=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate "https://docs.google.com/uc?export=download&id=$FILE_ID" -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$CONFIRM&id=$FILE_ID" -O $OUT_FILE
 rm -rf /tmp/cookies.txt
+unzip S3DIS.zip
 ```
 
 Download the train/test split files to the unzipped directory.
@@ -82,13 +85,14 @@ You can change the parameters (`k` and `\gammma` in the paper) with `-K` and `--
 We also provide the pretrained model for parameter `k=150` and `\gammma=1.0`:
 ```
 cd experiments
-wget https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/pretrained/ShapeNetParts_10_1.000000.tgz
-tar xzvf ShapeNetParts_10_1.000000.tgz
-rm -rf ShapeNetParts_10_1.000000.tgz
+wget https://shapenet.cs.stanford.edu/media/minhyuk/deep-functional-dictionaries/pretrained/S3DIS_150_1.000000.tgz
+tar xzvf S3DIS_150_1.000000.tgz
+rm -rf S3DIS_150_1.000000.tgz
 cd ..
 ```
 
 Run the evaluation (Table 3 in the paper) with the same `./run_shapenet_parts.py` file (without `--train` option).
+<br>
 
 
 ### Acknowledgements
