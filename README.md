@@ -1,7 +1,7 @@
 ## Deep Functional Dictionaries: Learning Consistent Semantic Structures on 3D Models from Functions 
 
 [Minhyuk Sung](http://mhsung.github.io), [Hao Su](http://cseweb.ucsd.edu/~haosu/), [Ronald Yu](https://ronaldiscool.github.io/), and [Leonidas Guibas](https://geometry.stanford.edu/member/guibas/)<br>
-NIPS 2018<br>
+NeurIPS 2018<br>
 [[arXiv]](https://arxiv.org/abs/1805.09957)
 
 ### Citation
@@ -10,7 +10,7 @@ NIPS 2018<br>
   Author = {Minhyuk Sung and Hao Su and Ronald Yu and Leonidas Guibas},
   Title = {Deep Functional Dictionaries: Learning Consistent Semantic Structures on 3D Models from
     Functions},
-  booktitle = {NIPS},
+  booktitle = {NeurIPS},
   Year = {2018}
 }
 ```
