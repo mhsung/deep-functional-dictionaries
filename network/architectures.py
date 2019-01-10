@@ -40,11 +40,11 @@ def get_learning_rate(init_learning_rate, global_step, batch_size,
     return learning_rate
 
 
-def build_pointnet_seg(X, out_dim, is_training, bn_decay, scope, use_spn=True):
+def build_pointnet_seg(X, out_dim, is_training, bn_decay, scope, use_stn=True):
     n_points = X.get_shape()[1].value
     n_dim = X.get_shape()[2].value
 
-    if use_spn:
+    if use_stn:
         ### STN 1 ###
         with tf.variable_scope('stn_1') as sc:
             transform_1 = input_transform_net(X, is_training, bn_decay, K=n_dim)
@@ -61,7 +61,7 @@ def build_pointnet_seg(X, out_dim, is_training, bn_decay, scope, use_spn=True):
             stride=[1,1], bn=True, is_training=is_training,
             bn_decay=bn_decay, scope=scope+'_conv2')
 
-    if use_spn:
+    if use_stn:
         ### STN 2 ###
         with tf.variable_scope('stn_2') as sc:
             transform_2 = feature_transform_net(net, is_training, bn_decay, K=64)
@@ -112,7 +112,7 @@ def build_pointnet_seg(X, out_dim, is_training, bn_decay, scope, use_spn=True):
     net = tf.squeeze(net)
 
     # Transform loss
-    if use_spn:
+    if use_stn:
         stn_loss = transform_loss(transform_2)
     else:
         stn_loss = 0.
